@@ -1,0 +1,5 @@
+flask
+uWSGI
+requests
+redis
+
