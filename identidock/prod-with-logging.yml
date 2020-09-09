@@ -7,6 +7,7 @@ identiproxy:
   environment:
     - NGINX_HOST=127.0.0.1
     - NGINX_PROXY=http://identidock:9090
+
 identidock:
   image: lirikvolirvag/identidock:1.0
   links:
@@ -53,3 +54,14 @@ kibana:
     - elasticsearch
   ports:
     - "5601:5601"
+
+cadvisor:
+  image: 'google/cadvisor:latest'
+  volumes:
+    - /:/rootfs:ro
+    - /var/run:/var/run:ro
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
+    - /dev/disk:/dev/disk/:ro
+  ports:
+  - '8080:8080'
